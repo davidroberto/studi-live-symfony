@@ -4,11 +4,12 @@
 namespace App\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PageController
+class PageController extends AbstractController
 {
 
     /**
@@ -38,10 +39,18 @@ class PageController
         $age = $request->query->get('age');
 
         if ($age < 18) {
-            return new Response('Dégage morveux');
+            return $this->redirectToRoute("digimon");
         }
 
         return new Response("Bienvenue sur mon super site de poker, dépensez du fric sans compter");
+    }
+
+    /**
+     * @Route("/digimon", name="digimon")
+     */
+    public function digimon()
+    {
+        return new Response("Les super Digimons qui se transforment en tank dès la première évolution");
     }
 
 }
