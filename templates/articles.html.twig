@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Articles
+{% endblock title %}
+
+{% block main %}
+
+    {% for article in articles %}
+        {% if article.isPublished %}
+            <article>
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+                <img src="{{ article.image }}" alt="{{ article.title }}">
+                <a href="{{ path('article', {'id': article.id}) }}">Voir l'article</a>
+            </article>
+        {% else %}
+            <h2>L'article n'est pas publié</h2>
+        {% endif %}
+    {% endfor %}
+
+{% endblock main %}

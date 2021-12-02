@@ -4,44 +4,78 @@
 namespace App\Controller;
 
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController
+class ArticleController extends AbstractController
 {
 
     /**
-     * @Route("/article/{id}", name="article", requirements={"id"="\d+"})
+     * @Route("/articles", name="articles")
      */
-    public function article(int $id)
+    public function articles()
     {
-        // simulation d'une requête SQL "SELECT * FROM article"
+        // simulation d'articles récupérées depuis la bdd (SELECT * FROM article)
         $articles = [
             1 => [
-                "title" => "Article 1",
+                "title" => "article 1",
                 "content" => "Contenu de l'article 1",
+                "image" => "https://ionnews.mu/wp-content/uploads/2021/06/index-7.jpg",
+                "isPublished" => true,
                 "id" => 1
             ],
             2 => [
-                "title" => "Article 2",
+                "title" => "article 2",
                 "content" => "Contenu de l'article 2",
-                "id" => 2
+                "image" => "https://ionnews.mu/wp-content/uploads/2021/06/index-7.jpg",
+                "isPublished" => false,
+                "id" => 3
             ],
             3 => [
-                "title" => "Article 3",
+                "title" => "article 3",
                 "content" => "Contenu de l'article 3",
+                "image" => "https://ionnews.mu/wp-content/uploads/2021/06/index-7.jpg",
+                "isPublished" => true,
                 "id" => 3
             ]
         ];
 
-        if (!array_key_exists($id, $articles)) {
-            return new Response("L'article n'existe pas", 404);
-        }
-
-        $article = $articles[$id];
-
-        return new Response($article['title']);
+        return $this->render('articles.html.twig', [
+            'articles' => $articles
+        ]);
     }
 
+    /**
+     * @Route("article/{id}", name="article")
+     */
+    public function article($id)
+    {
+        $articles = [
+            1 => [
+                "title" => "article 1",
+                "content" => "Contenu de l'article 1",
+                "image" => "https://ionnews.mu/wp-content/uploads/2021/06/index-7.jpg",
+                "isPublished" => true,
+                "id" => 1
+            ],
+            2 => [
+                "title" => "article 2",
+                "content" => "Contenu de l'article 2",
+                "image" => "https://ionnews.mu/wp-content/uploads/2021/06/index-7.jpg",
+                "isPublished" => false,
+                "id" => 3
+            ],
+            3 => [
+                "title" => "article 3",
+                "content" => "Contenu de l'article 3",
+                "image" => "https://ionnews.mu/wp-content/uploads/2021/06/index-7.jpg",
+                "isPublished" => true,
+                "id" => 3
+            ]
+        ];
+
+        return $this->render('article.html.twig', [
+            'article' => $articles[$id]
+        ]);
+    }
 }
