@@ -1,0 +1,16 @@
+
+.header {
+    height: 100px;
+    background-color: lightblue;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.menu {
+    height: 100%;
+}

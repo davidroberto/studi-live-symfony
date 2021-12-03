@@ -6,11 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock title %}</title>
+    {% block css %}{% endblock css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    {{ encore_entry_link_tags('app') }}
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
+<header class="header">
+    <nav class="menu">
+
+        <ul class="menu-items">
             <li>
                 <a href="{{ path('home') }}">Accueil</a>
             </li>
@@ -26,5 +30,6 @@
     {% block main %}{% endblock main %}
 
 </main>
+<script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>
