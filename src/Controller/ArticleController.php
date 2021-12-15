@@ -43,7 +43,7 @@ class ArticleController extends AbstractController
             'article' => $article
         ]);
     }
-    
+
 
     /**
      * @Route("/search-results", name="search")
@@ -52,7 +52,6 @@ class ArticleController extends AbstractController
     {
         $search = $request->query->get('search');
 
-
         $articles = $articleRepository->searchArticle($search);
 
         return $this->render('search_articles.html.twig', [
@@ -60,4 +59,5 @@ class ArticleController extends AbstractController
             'search' => $search
         ]);
     }
+
 }
