@@ -1,0 +1,27 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block main %}
+
+    {{ form_start(articleForm) }}
+
+    {{ form_label(articleForm.title) }}
+    {{ form_widget(articleForm.title, {'attr': {'class': 'maClass'}}) }}
+
+    {{ form_label(articleForm.content) }}
+    {{ form_widget(articleForm.content) }}
+
+    {{ form_label(articleForm.publishedAt) }}
+    {{ form_widget(articleForm.publishedAt) }}
+
+    {{ form_label(articleForm.isPublished) }}
+    {{ form_widget(articleForm.isPublished) }}
+
+    {{ form_label(articleForm.category) }}
+    {{ form_widget(articleForm.category) }}
+
+    {{ form_widget(articleForm.submit) }}
+
+    {{ form_end(articleForm) }}
+
+{% endblock %}
+
