@@ -20,6 +20,12 @@
     </nav>
 </header>
 
+{% for message in app.flashes('success') %}
+    <div class="success-message">
+        {{ message }}
+    </div>
+{% endfor %}
+
 {% block main %}{% endblock main %}
 
 </body>
