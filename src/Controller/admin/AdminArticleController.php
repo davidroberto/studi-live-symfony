@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 
 
 use App\Entity\Article;
+use App\Entity\User;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManager;
@@ -47,13 +48,16 @@ class AdminArticleController extends AbstractController
      */
     public function insertArticle(Request $request, EntityManagerInterface $entityManager)
     {
-        $article = new Article();
+        $user = new User();
 
-        $articleForm = $this->createForm(ArticleType::class, $article);
-        $articleForm->handleRequest($request);
+        $userForm = $this->createForm(UserType::class, $user);
+        $userForm->handleRequest($request);
 
-        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-            $entityManager->persist($article);
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
+
+            $user->setRoles(["ROLE_ADMIN"]);
+
+            $entityManager->persist($user);
             $entityManager->flush();
         }
 
