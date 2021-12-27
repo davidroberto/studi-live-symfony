@@ -1,0 +1,18 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block main %}
+
+    <form action="{{ path('contact') }}" method="post">
+        <label for="firstName">Prénom</label>
+        <input type="text" name="firstName">
+        <label for="lastName">Nom</label>
+        <input type="text" name="lastName">
+        <label for="email">Email</label>
+        <input type="text" name="email">
+        <label for="message">Message</label>
+        <textarea name="message"></textarea>
+        <input type="submit">
+    </form>
+
+{% endblock %}
+
